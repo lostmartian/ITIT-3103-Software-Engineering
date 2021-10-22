@@ -5,7 +5,7 @@ from flask.helpers import get_flashed_messages
 
 def importDatabase():
     if 'db' not in g:
-        g.db = sqlite3.connect('datavase.db')
+        g.db = sqlite3.connect('database.db')
     return g.db
 
 def queryDatabase(query, args=()):
