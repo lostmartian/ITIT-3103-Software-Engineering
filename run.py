@@ -1,4 +1,5 @@
 from flask import Flask, request, g, render_template
+from database import importDatabase, queryDatabase
 
 app = Flask(__name__, static_url_path='/static')
 
