@@ -1,10 +1,14 @@
-from flask import g
+from flask import g, Flask
 import sqlite3
 
-def importDatabase():
-    db = db = getattr(g, '_database', None)
-    if db is None:
-        db = g._database = sqlite3.connect('database.db')
+from flask.helpers import get_flashed_messages
 
-def queryDatabase(query, args=(), ):
+def importDatabase():
+    if 'db' not in g:
+        g.db = sqlite3.connect('database.db')
+    return g.db
+
+def queryDatabase(query, args=()):
+    get_query = importDatabase().execute(query, args).fetchall()
+    return get_query
 
