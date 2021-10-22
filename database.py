@@ -1,7 +1,5 @@
-from flask import g, Flask
+from flask import g
 import sqlite3
-
-from flask.helpers import get_flashed_messages
 
 def importDatabase():
     if 'db' not in g:
