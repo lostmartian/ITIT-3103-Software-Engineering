@@ -2,11 +2,15 @@ from flask import g
 import sqlite3
 
 def importDatabase():
-    if 'db' not in g:
-        g.db = sqlite3.connect('database.db')
-    return g.db
+    db = getattr(g, '_database', None)
 
+    if db is None:
+        db = g._database = sqlite3.connect('database.db')
+
+    return db
+    
 def queryDatabase(query, args=()):
-    get_query = importDatabase().execute(query, args).fetchall()
-    return get_query
+    get_query = importDatabase().execute(query, args)
+    rv = get_query.fetchall()
+    return rv
 

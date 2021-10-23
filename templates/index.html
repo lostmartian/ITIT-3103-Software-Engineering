@@ -7,6 +7,9 @@
         <div class="row">
             <img src="../static/img/logo.svg" class="center img-fluid">
         </div>
-        
+        <li><a href="/createBoard">Create New Board! </a></li>
+        {% for bb in board %}
+        <li>{{bb[1]}} - {{bb[2]}}</li>
+        {% endfor %}
     </div>
 {% endblock content %}

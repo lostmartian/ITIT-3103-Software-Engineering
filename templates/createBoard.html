@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Board - bWall{% endblock title %}
+
+{% block content %}
+    <form method = "POST" action="/createBoard/" enctype=multipart/form-data>
+    Board Name:<input type="text" name="board_name"/><br/>
+    Board Description:<textarea type="text" name="board_description"></textarea><br/>
+    <input type="submit" value="Create Board!"/>
+    </form>
+{% endblock content %}
