@@ -1,19 +1,17 @@
-from os import name
-import re
-from flask import Flask, request, render_template
-from database import queryDatabase
-from createBoard import createBoard
+from flask import Flask, request, render_template, g, current_app
+from database import queryDatabase, importDatabase
+from board import cb
 
 app = Flask(__name__, static_url_path='/static')
 
 @app.route('/')
 def index():
-    get_boards = queryDatabase('SELECT * FROM board')
-    return render_template('index.html', boards = get_boards)
+    board = queryDatabase('SELECT * FROM board')
+    return render_template('index.html', board = board)
 
-@app.route('/newBoard/', methods = ['GET', 'POST'])
-def newboard():
-    return createBoard
-    
+@app.route('/createBoard/', methods = ['GET', 'POST'])
+def createBoard():
+    return cb()
+
 if __name__== "__main__":
     app.run(debug=True)
