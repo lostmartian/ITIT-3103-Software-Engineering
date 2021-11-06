@@ -9,7 +9,7 @@ CREATE TABLE posts (
 
 CREATE TABLE board (
     board_id INTEGER PRIMARY KEY,
-    board_name TEXT NOT NULL,
+    board_name TEXT NOT NULL UNIQUE,
     board_description TEXT NOT NULL
 );
 
