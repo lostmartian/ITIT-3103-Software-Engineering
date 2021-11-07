@@ -1,7 +1,9 @@
 from flask import request, render_template
-from database import importDatabase
+from database import importDatabase, queryDatabase
 from flask.helpers import flash, url_for
 from werkzeug.utils import redirect
+
+from run import board
 
 
 def generateBoard():
@@ -37,5 +39,13 @@ def cb():
 
 def deleteBoard(board_name):
     db = importDatabase()
+
+def boardShow(boardname):
+    posts = queryDatabase('SELECT * FROM posts WHERE board = "{}"'.format(board))
+    return posts
+
+def individualBoardPostData():
+    boarddata = boardShow(board)
+    return boarddata
 
     
