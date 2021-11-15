@@ -3,8 +3,6 @@ from database import importDatabase, queryDatabase
 from flask.helpers import flash, url_for
 from werkzeug.utils import redirect
 
-from run import board
-
 
 def generateBoard():
     if request.method == 'GET':
@@ -41,11 +39,11 @@ def deleteBoard(board_name):
     db = importDatabase()
 
 def boardShow(boardname):
-    posts = queryDatabase('SELECT * FROM posts WHERE board = "{}"'.format(board))
+    posts = queryDatabase('SELECT * FROM posts WHERE board = "{}"'.format(boardname))
     return posts
 
-def individualBoardPostData():
+def individualBoardPostData(board):
     boarddata = boardShow(board)
-    return boarddata
+    return render_template('boardDisplay.html', boarddata=boarddata, board=board)
 
     
