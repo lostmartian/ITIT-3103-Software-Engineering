@@ -1,0 +1,79 @@
+{% extends 'base.html' %} {% block title %} {{board}} {{board_desc}} {% endblock title %} 
+
+{% block head %}
+<link rel="stylesheet" href="../static/css/form.css">
+{% endblock head %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="row mt-sm-5">
+        <div class="col-sm-5">
+            <a href="/"><img src="../static/img/logo.svg" class="center img-fluid" /></a>
+        </div>
+        <div class="col-sm-7 mt-3">
+            <h3 class="font-weight-bold"> 
+            {{board}} </h3>
+            <p class="font-weight-light"> {{boarddescription[0]}}
+            </p>
+        </div>
+    </div>
+
+    <div class="row mt-md-4">
+        <div class="col-sm-12 ml-sm-5 center">
+
+            <form method="POST" action="/b/{{board}}/post" enctype="multipart/form-data">
+                <h4>Create post</h4>
+                <br>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Post Title: </label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Enter title" name="user" >
+                    <small id="emailHelp" class="form-text text-muted">Give a relevant eye-catchy title</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Image: </label>
+                    <input type=file class="form-control" id="exampleInputPassword1" name="image">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Post Description: </label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="post_text"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Create Post !</button>
+            </form>
+            
+            <!-- <form method="POST" action="/b/{{board}}/post" enctype="multipart/form-data">
+
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
+                Title: <input type="text" name="user">
+                <br>
+                Image: <input type=file name="image">
+                <br>
+                Description: <input type="text">
+            </form> -->
+        </div>
+    </div>
+
+
+
+
+</div>
+
+
+<script>
+    function openForm() {
+        document.getElementById("postForm").style.display = "block";
+    }
+
+    function closeForm() {
+        document.getElementById("postForm").style.display = "none";
+    }
+</script>
+
+
+{% endblock %}
+
