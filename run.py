@@ -24,7 +24,7 @@ def createBoard():
 
 @app.route('/b/<board>')
 def showBoard(board):
-    return individualBoardPostData
+    return individualBoardPostData(board)
 
 if __name__== "__main__":
     app.run(debug=True)
