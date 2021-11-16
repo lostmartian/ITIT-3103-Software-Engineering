@@ -26,11 +26,44 @@
                 Posts - View the recent posts in the {{board}} board or
             </p>
             <p class="h5 text-center">
-                <a href="/b/{{board}}/createPost.html">Create post !</a>
+                <a href="/b/{{board}}/createPost/">Create post !</a>
             </p>
         </div>
     </div>
 
+
+
+    <!--
+        POST DISPLAY BEGINS
+    -->
+
+    <div class="row mt-sm-5">
+        <div class="col-sm-12">
+            <ul>
+                {% for post in posts|reverse %}
+                hi
+                <div>
+                    {% if post[1] %}
+                    <a href="{{url_for('static',filename='uploads/'+post[1])}}"><img style="width:100px;"
+                            src="{{url_for('static',filename='uploads/'+post[1])}}" /></a>
+                    {% endif %}
+                    User:{{post[2]}}
+                    Date:{{post[3]}}
+                    <br></br>
+                    Post:{{post[5]}}
+                    <br></br>
+                    <a href="/b/{{board}}/reply/{{post[0]}}">Reply</a>
+                    <br></br>
+                </div>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+
+    <!--
+        POST DISPLAY ENDS
+    -->
 
 
 

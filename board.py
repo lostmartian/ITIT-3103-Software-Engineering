@@ -43,9 +43,9 @@ def boardShow(boardname):
     return posts
 
 def individualBoardPostData(board):
-    boarddata = boardShow(board)
+    posts = boardShow(board)
     boarddescription = queryDatabase(
         'SELECT board_description FROM board WHERE board_name = "{}"'.format(board))
-    return render_template('boardDisplay.html', boarddata=boarddata, board=board, boarddescription=boarddescription)
+    return render_template('boardDisplay.html', posts = posts, board=board, boarddescription=boarddescription)
 
     
