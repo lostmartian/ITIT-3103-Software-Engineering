@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block title %} {{board}} {{board_desc}} {% endblock title %} 
+{% extends 'base.html' %} {% block title %} {{board}} {{board_desc}} {% endblock title %}
 
 {% block head %}
 <link rel="stylesheet" href="../static/css/form.css">
@@ -13,8 +13,8 @@
             <a href="/"><img src="../static/img/logo.svg" class="center img-fluid" /></a>
         </div>
         <div class="col-sm-7 mt-3">
-            <h3 class="font-weight-bold"> 
-            {{board}} </h3>
+            <h3 class="font-weight-bold">
+                {{board}} </h3>
             <p class="font-weight-light"> {{boarddescription[0]}}
             </p>
         </div>
@@ -37,27 +37,47 @@
         POST DISPLAY BEGINS
     -->
 
-    <div class="row mt-sm-5">
-        <div class="col-sm-12">
-            <ul>
-                {% for post in posts|reverse %}
-                hi
-                <div>
-                    {% if post[1] %}
-                    <a href="{{url_for('static',filename='uploads/'+post[1])}}"><img style="width:100px;"
-                            src="{{url_for('static',filename='uploads/'+post[1])}}" /></a>
-                    {% endif %}
-                    User:{{post[2]}}
-                    Date:{{post[3]}}
-                    <br></br>
-                    Post:{{post[5]}}
-                    <br></br>
-                    <a href="/b/{{board}}/reply/{{post[0]}}">Reply</a>
-                    <br></br>
+    <div class="row d-flex justify-content-center">
+
+        {% for post in posts|reverse %}
+
+        <div class="row p-sm-5 d-flex justify-content-center">
+            <div class="col-lg-12">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="media mb-3">
+                            <img src="{{url_for('static', filename='img/user-spy.png')}}" class="d-block ui-w-40 rounded-circle"
+                                alt="">
+                            <div class="media-body ml-3">
+                                Anonymous
+                                <div class="text-muted small">{{post[3]}}</div>
+                            </div>
+                        </div>
+        
+                        <p class="font-weight-bold justify-content-center">
+                            {{post[2]}}
+                        </p>
+                        <img class="img-fluid card-img"
+                            src="{{url_for('static',filename='uploads/'+post[1])}}">
+                        <p class="mt-sm-2">
+                            {{post[5]}}
+                        </p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-end">
+                        <a href="/b/{{board}}/reply/{{post[0]}}">
+                            <button type="button" class="btn btn-dark ">View full post</button>
+                        </a>
+                    </div>
                 </div>
-                {% endfor %}
-            </ul>
+            </div>
         </div>
+
+
+
+
+
+        
+        {% endfor %}
     </div>
 
 
@@ -70,16 +90,4 @@
 </div>
 
 
-<script>
-    function openForm() {
-        document.getElementById("postForm").style.display = "block";
-    }
-
-    function closeForm() {
-        document.getElementById("postForm").style.display = "none";
-    }
-</script>
-
-
 {% endblock %}
-

@@ -38,6 +38,7 @@ class postRequests:
     def postCreation(self):
         filename = ''
         if request.form.get('post_text'):
+            postText = request.form.get('post_text')
             if 'image' in request.files:
                 file = request.files['image']
                 if file and self.validFileName(file.filename):
@@ -49,4 +50,4 @@ class postRequests:
             post = (newfilename, request.form.get('user'),
                 now.isoformat(), self.board, request.form.get('post_text'))
             print(self.postAddDB(post, '0'))
-        return 'posted'
+        return redirect(url_for('showBoard', board=self.board))
