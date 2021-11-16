@@ -1,7 +1,85 @@
-{% extends 'base.html' %} {% block title %}{{board}}{% endblock title %} {% block content %}
+{% extends 'base.html' %} {% block title %} {{board}} {{board_desc}} {% endblock title %} 
+
+{% block head %}
+<link rel="stylesheet" href="../static/css/form.css">
+{% endblock head %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="row mt-sm-5">
+        <div class="col-sm-5">
+            <a href="/"><img src="../static/img/logo.svg" class="center img-fluid" /></a>
+        </div>
+        <div class="col-sm-7 mt-3">
+            <h3 class="font-weight-bold"> 
+            {{board}} </h3>
+            <p class="font-weight-light"> {{boarddescription[0]}}
+            </p>
+        </div>
+    </div>
+
+    <div class="row mt-md-4">
+        <div class="col-sm-12 ml-sm-5 center">
+            <p class="h4 text-center">
+                Posts - View the recent posts in the {{board}} board or
+            </p>
+            <p class="h5 text-center">
+                <a href="/b/{{board}}/createPost/">Create post !</a>
+            </p>
+        </div>
+    </div>
 
 
 
+    <!--
+        POST DISPLAY BEGINS
+    -->
+
+    <div class="row mt-sm-5">
+        <div class="col-sm-12">
+            <ul>
+                {% for post in posts|reverse %}
+                hi
+                <div>
+                    {% if post[1] %}
+                    <a href="{{url_for('static',filename='uploads/'+post[1])}}"><img style="width:100px;"
+                            src="{{url_for('static',filename='uploads/'+post[1])}}" /></a>
+                    {% endif %}
+                    User:{{post[2]}}
+                    Date:{{post[3]}}
+                    <br></br>
+                    Post:{{post[5]}}
+                    <br></br>
+                    <a href="/b/{{board}}/reply/{{post[0]}}">Reply</a>
+                    <br></br>
+                </div>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+
+    <!--
+        POST DISPLAY ENDS
+    -->
+
+
+
+</div>
+
+
+<script>
+    function openForm() {
+        document.getElementById("postForm").style.display = "block";
+    }
+
+    function closeForm() {
+        document.getElementById("postForm").style.display = "none";
+    }
+</script>
 
 
 {% endblock %}
+

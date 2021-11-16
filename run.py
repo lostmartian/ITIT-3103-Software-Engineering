@@ -1,8 +1,13 @@
+from os import remove
 from flask import Flask, request, render_template, g, current_app
 from database import queryDatabase, importDatabase
 from board import cb, individualBoardPostData
+from post import postRequests
+
+upload_folder = 'static/uploads'
 
 app = Flask(__name__, static_url_path='/static')
+app.config['upload_folder'] = upload_folder
 
 @app.route('/')
 def index():
@@ -25,6 +30,15 @@ def createBoard():
 @app.route('/b/<board>')
 def showBoard(board):
     return individualBoardPostData(board)
+
+@app.route('/b/<board>/createPost/')
+def createPostPage(board):
+    return render_template('createPost.html', board=board)
+
+@app.route('/b/<board>/post', methods = ['POST'])
+def posting(board):
+    x = postRequests(board, app)
+    return x.postCreation()
 
 if __name__== "__main__":
     app.run(debug=True)
