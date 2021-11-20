@@ -40,5 +40,11 @@ def posting(board):
     x = postRequests(board, app)
     return x.postCreation()
 
+
+@app.route('/b/<board>/delete/postID', methods=['GET'])
+def deletePost(board, postID):
+    x = postRequests(board, app)
+    x.deletePost(postID)
+
 if __name__== "__main__":
     app.run(debug=True)

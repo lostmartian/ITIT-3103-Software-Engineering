@@ -1,93 +1,56 @@
-{% extends 'base.html' %} {% block title %} {{board}} {{board_desc}} {% endblock title %}
+{% extends 'base.html' %} {% block title %} {{board}} {{board_desc}} {% endblock
+title %} {% block head %}
+<link rel="stylesheet" href="../static/css/form.css" />
+{% endblock head %} {% block content %}
 
-{% block head %}
-<link rel="stylesheet" href="../static/css/form.css">
-{% endblock head %}
-
-{% block content %}
-
-
-<div class="container">
-    <div class="row mt-sm-5">
-        <div class="col-sm-5">
-            <a href="/"><img src="../static/img/logo.svg" class="center img-fluid" /></a>
-        </div>
-        <div class="col-sm-7 mt-3">
-            <h3 class="font-weight-bold">
-                {{board}} </h3>
-            <p class="font-weight-light"> {{boarddescription[0]}}
-            </p>
-        </div>
+<div class="row mt-sm-5">
+    <div class="col-sm-5">
+        <a href="/"><img src="../static/img/logo.svg" class="center img-fluid" /></a>
     </div>
-
-    <div class="row mt-md-4">
-        <div class="col-sm-12 ml-sm-5 center">
-            <p class="h4 text-center">
-                Posts - View the recent posts in the {{board}} board or
-            </p>
-            <p class="h5 text-center">
-                <a href="/b/{{board}}/createPost/">Create post !</a>
-            </p>
-        </div>
+    <div class="col-sm-7 mt-3">
+        <h3 class="font-weight-bold">{{board}}</h3>
+        <p class="font-weight-light">{{boarddescription[0]}}</p>
     </div>
+</div>
 
+<div class="row mt-md-4">
+    <div class="col-sm-12 ml-sm-5 center">
+        <p class="h4 text-center d-none d-sm-block">
+            Posts - View the recent posts in the {{board}} board or
+        </p>
+        <p class="h5 text-center">
+            <a href="/b/{{board}}/createPost/" class="text-info">
+                <button type="button" class="btn btn-info">Create Post</button>
+            </a>
+        </p>
+    </div>
+</div>
 
-
-    <!--
+<!--
         POST DISPLAY BEGINS
     -->
 
-    <div class="row d-flex justify-content-center">
-
-        {% for post in posts|reverse %}
-
-        <div class="row p-sm-5 d-flex justify-content-center">
-            <div class="col-lg-12">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <div class="media mb-3">
-                            <img src="{{url_for('static', filename='img/user-spy.png')}}" class="d-block ui-w-40 rounded-circle"
-                                alt="">
-                            <div class="media-body ml-3">
-                                Anonymous
-                                <div class="text-muted small">{{post[3]}}</div>
-                            </div>
-                        </div>
-        
-                        <p class="font-weight-bold justify-content-center">
-                            {{post[2]}}
-                        </p>
-                        <img class="img-fluid card-img"
-                            src="{{url_for('static',filename='uploads/'+post[1])}}">
-                        <p class="mt-sm-2">
-                            {{post[5]}}
-                        </p>
-                    </div>
-                    <div class="card-footer d-flex justify-content-end">
-                        <a href="/b/{{board}}/reply/{{post[0]}}">
-                            <button type="button" class="btn btn-dark ">View full post</button>
-                        </a>
-                    </div>
-                </div>
+<div class="row-sm p-1">
+    {% for post in posts|reverse %}
+    <div class="row p-sm-5 mt-3 border border-info rounded">
+        <div class="col-sm-2 mt-2">
+            <img src="{{url_for('static', filename='uploads/'+post[1])}}" class="img-thumbnail">
+            <div class="row p-sm-3 mt-2 d-flex justify-content-center">
+            <a href="/b/{{board}}/reply/{{post[0]}}" class="text-white bg-dark border rounded border-light p-2">
+                Full Post / Replies</a>
             </div>
         </div>
-
-
-
-
-
-        
-        {% endfor %}
+        <div class="col-sm-9">
+            <p class="h4">{{post[0]}} {{post[2]}}</p>
+            <p class="h7">{{post[5]}}</p>
+        </div>
     </div>
 
-
-    <!--
-        POST DISPLAY ENDS
-    -->
-
-
-
+    {% endfor %}
 </div>
 
+<!--
+        POST DISPLAY ENDS
+    -->
 
 {% endblock %}
