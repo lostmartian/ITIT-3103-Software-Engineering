@@ -46,5 +46,13 @@ def deletePost(board, postID):
     x = postRequests(board, app)
     x.deletePost(postID)
 
+@app.route('/rules')
+def rules():
+    return render_template('rules.html')
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 if __name__== "__main__":
     app.run(debug=True)

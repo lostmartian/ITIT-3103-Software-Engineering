@@ -14,7 +14,7 @@ title %} {% block head %}
 </div>
 
 <div class="row mt-md-4">
-    <div class="col-sm-12 ml-sm-5 center">
+    <div class="col-sm-12 center">
         <p class="h4 text-center d-none d-sm-block">
             Posts - View the recent posts in the {{board}} board or
         </p>
@@ -30,24 +30,39 @@ title %} {% block head %}
         POST DISPLAY BEGINS
     -->
 
+{% if boardEmpty==True %}
+
+<div class="row-sm p1">
+    <p class="mt-5 h5 text-center text-danger">
+        The board is empty ! Click on create post button above to create a post ;-)
+    </p>
+</div>
+
+{% else %}
+
+
+
 <div class="row-sm p-1">
     {% for post in posts|reverse %}
     <div class="row p-sm-5 mt-3 border border-info rounded">
         <div class="col-sm-2 mt-2">
             <img src="{{url_for('static', filename='uploads/'+post[1])}}" class="img-thumbnail">
             <div class="row p-sm-3 mt-2 d-flex justify-content-center">
-            <a href="/b/{{board}}/reply/{{post[0]}}" class="text-white bg-dark border rounded border-light p-2">
-                Full Post / Replies</a>
+                <a href="/b/{{board}}/reply/{{post[0]}}" class="text-white bg-dark border rounded border-light p-2">
+                    Full Post / Replies</a>
             </div>
         </div>
         <div class="col-sm-9">
-            <p class="h4">{{post[0]}} {{post[2]}}</p>
+            <p class="h4 font-weight-bold">{{post[2]}}</p>
             <p class="h7">{{post[5]}}</p>
+            <p class="font-weight-light">Upload date & time: {{post[3][0:10]}} {{post[3][11:19]}}</p>
         </div>
     </div>
 
     {% endfor %}
 </div>
+
+{% endif %}
 
 <!--
         POST DISPLAY ENDS
