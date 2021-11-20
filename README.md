@@ -3,13 +3,6 @@
 
 bWall is a simple image-based bulletin board where anyone can post comments and share images.
 
-## Look and feel
-
-![Landing Page](https://i.ibb.co/6t96NLh/landing-page-desktop.png)
-
-![Board Page](https://i.ibb.co/NmcNxyH/board-display-desktop.png)
-
-
 ## Features
 
 - User - Complete anonymity, Create board, Create Post, Reply to thread
@@ -20,6 +13,10 @@ bWall is a simple image-based bulletin board where anyone can post comments and 
 - Flask
 - Bootstrap
 - Vanilla JS
+
+## Look and feel
+
+![Landing and Board page](https://i.ibb.co/2793wnP/all.png)
 
 ## Local Setup
 
@@ -32,4 +29,3 @@ bWall is a simple image-based bulletin board where anyone can post comments and 
   python3 run.py
 ```
 - Click on the local jost IP address and it works
-
