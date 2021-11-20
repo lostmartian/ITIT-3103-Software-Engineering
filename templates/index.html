@@ -2,7 +2,7 @@
 
 <div class="row mt-sm-5">
     <div class="col-sm-5">
-        <a href="#"><img src="../static/img/logo.svg" class="center img-fluid" /></a>
+        <a href="#"><img src="{{url_for('static',filename='img/logo.svg')}}" class="center img-fluid" /></a>
     </div>
     <div class="col-sm-7 mt-3">
         <p class="font-weight-bold"> What is bWall ? </p>
@@ -21,11 +21,11 @@
         </p>
         <p class="h6 text-center">
             Feel free to click on a board below that interests you and
-            jump right in or <a href="/createBoard"><b>Create New Board!</b> </a>
+            jump right in or <a href="/createBoard" class="text-info"><b>Create New Board!</b> </a>
         </p>
     </div>
 </div>
-
+<div class="d-none d-sm-block">
 <div class="row mt-sm-5 glass-panel">
     <div class="col-sm-4 font-weight-bold">
         {% for b in board1 %}
@@ -41,6 +41,21 @@
         {% for b in board3 %}
         <p class="center"><a href="/b/{{b[1]}}" class="glass-button">{{b[1]}}</a></p>
         {% endfor %}
+    </div>
+</div>
+</div>
+
+<div class="row mt-3 d-flex justify-content-center d-sm-none">
+    <div class="btn-group">
+        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            View Boards
+        </button>
+        <div class="dropdown-menu">
+            {% for b in board %}
+            <a class="dropdown-item" href="/b/{{b[1]}}">{{b[1]}}</a>
+            {% endfor %}
+        </div>
     </div>
 </div>
 

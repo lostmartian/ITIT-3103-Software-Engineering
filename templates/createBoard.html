@@ -3,9 +3,39 @@
 {% block title %}Create Board - bWall{% endblock title %}
 
 {% block content %}
-    <form method = "POST" action="/createBoard/" enctype=multipart/form-data>
-    Board Name:<input type="text" name="board_name"/><br/>
-    Board Description:<textarea type="text" name="board_description"></textarea><br/>
-    <input type="submit" value="Create Board!"/>
-    </form>
+
+<div class="row mt-sm-5">
+    <div class="col-sm-5">
+        <a href="/"><img src="../static/img/logo.svg" class="center img-fluid" /></a>
+    </div>
+    <div class="col-sm-7 mt-3">
+        <h3 class="font-weight-bold">{{board}}</h3>
+        <p class="font-weight-light text-warning">NOTE: Create a new board if and only if the board doesn't exist already</p>
+    </div>
+</div>
+
+<div class="row mt-md-4">
+    <div class="col-sm-12 center">
+        <p class="h4 text-center d-none d-sm-block">
+            Create Board
+        </p>
+    </div>
+</div>
+
+<div class="row p-2 d-flex justify-content-center">
+
+<form method="POST" action="/createBoard/" enctype=multipart/form-data>
+    <div class="form-group">
+        <label for="exampleInputEmail1" class="text-light">Board Name</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  name="board_name">
+        <small id="emailHelp" class="form-text text-muted">Create a new board if and only if the board doesn't exist already</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1" class="text-light">Board Description: </label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="board_description" maxlength="256"></textarea>
+        <small id="emailHelp" class="form-text text-muted">Character Limit: 256 characters only</small>
+    </div>
+    <button type="submit" class="btn">Submit</button>
+</form>
+</div>
 {% endblock content %}

@@ -1,3 +1,32 @@
-<!--
-    https://codepen.io/petegarvin1/pen/YzWBbRx
--->
+{% extends 'base.html' %}
+
+{% block title %}About - bWall{% endblock title %}
+
+{% block content %}
+
+<div class="row mt-sm-5">
+    <div class="col-sm-5">
+        <a href="/"><img src="../static/img/logo.svg" class="center img-fluid" /></a>
+    </div>
+    <div class="col-sm-7 mt-3">
+        <h3 class="font-weight-bold">About</h3>
+        <p class="">Welcome to bWall and be sure to familiarize yourself with it </p>
+    </div>
+</div>
+
+<div class="row mt-md-4">
+    <div class="col-sm-12">
+
+            <li>
+            bWall is a simple image-based bulletin board where anyone can post comments and share images. bWall's collaborative-community format was inspired by one of the most popular forums in Japan, Futaba Channel. Different boards are dedicated to different topics, from Japanese anime, manga, and culture to videogames, music, and photography. Users do not need to register an account before participating in the community.
+            </li>
+            <li>Users are encouraged to participate actively in our community, but only after they have familiarized themselves with the <a href="/rules" class="text-info">rules</a>.
+            </li>
+            <li>To post as "Anonymous", simply do not fill in the [Name] field when submitting content. Information such as your personal IP address is viewable only to the administrators, and is not made publicly available.</li>
+            <li>To start a new thread, you must upload an image. 4chan is primarily an imageboard after all! When replying to an already existing thread, no attachment is required.</li>
+            
+    </div>
+</div>
+
+
+{% endblock content %}
