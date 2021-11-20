@@ -51,3 +51,16 @@ class postRequests:
                 now.isoformat(), self.board, request.form.get('post_text'))
             print(self.postAddDB(post, '0'))
         return redirect(url_for('showBoard', board=self.board))
+
+    def deletePost(self, postID):
+        query = ''' DELETE FROM posts WHERE post_id=? '''
+        db = importDatabase()
+        try:
+            db.execute(query, postID)
+            db.commit()
+            print("Post deleted")
+        except db.IntegrityError:
+            error = f"Integrity error"
+        else:
+            return redirect(url_for('showBoard', board=self.board))
+

@@ -1,53 +1,48 @@
 {% extends 'base.html' %} {% block title %}Welcome{% endblock title %} {% block content %}
-<div class="container">
-    <div class="row mt-sm-5">
-        <div class="col-sm-5">
-            <a href="#"><img src="../static/img/logo.svg" class="center img-fluid" /></a>
-        </div>
-        <div class="col-sm-7 mt-3">
-            <p class="font-weight-bold"> What is bWall ? </p>
-            <p class="font-weight-light"> bWall is a image-based board where anyone can post comments and share images.
-                There are boards dedicated
-                to a variety of topics, from anime to videogames, music, and photography. Users do not need to
-                register an account before participating in the community.
-            </p>
-        </div>
+
+<div class="row mt-sm-5">
+    <div class="col-sm-5">
+        <a href="#"><img src="../static/img/logo.svg" class="center img-fluid" /></a>
     </div>
-    <!-- <li><a href="/createBoard">Create New Board! </a></li>
-    {% for bb in board %}
-    <li>{{bb[1]}} - {{bb[2]}}</li>
-    {% endfor %} -->
-
-    <div class="row mt-md-4">
-        <div class="col-sm-12 center">
-            <p class="h4 text-center">
-                Boards
-            </p>
-            <p class="h6 text-center">
-                Feel free to click on a board below that interests you and
-                jump right in or <a href="/createBoard"><b>Create New Board!</b> </a>
-            </p>
-        </div>
+    <div class="col-sm-7 mt-3">
+        <p class="font-weight-bold"> What is bWall ? </p>
+        <p class="font-weight-light"> bWall is a image-based board where anyone can post comments and share images.
+            There are boards dedicated
+            to a variety of topics, from anime to videogames, music, and photography. Users do not need to
+            register an account before participating in the community.
+        </p>
     </div>
-
-    <div class="row mt-sm-5 ml-sm-5">
-        <div class="col-sm-4 font-weight-bold">
-            {% for b in board1 %}
-            <p class="center"><a href="/b/{{b[1]}}">{{b[1]}}</a></p>
-            {% endfor %}
-        </div>
-        <div class="col-sm-4 font-weight-bold">
-            {% for b in board2 %}
-            <p class="center mt"><a href="/b/{{b[1]}}">{{b[1]}}</a></p>
-            {% endfor %}
-        </div>
-        <div class="col-sm-4 font-weight-bold">
-            {% for b in board3 %}
-            <p class="center"><a href="/b/{{b[1]}}">{{b[1]}}</a></p>
-            {% endfor %}
-        </div>
-    </div>
-
-
 </div>
+
+<div class="row mt-md-4">
+    <div class="col-sm-12 center">
+        <p class="h4 text-center">
+            Boards
+        </p>
+        <p class="h6 text-center">
+            Feel free to click on a board below that interests you and
+            jump right in or <a href="/createBoard"><b>Create New Board!</b> </a>
+        </p>
+    </div>
+</div>
+
+<div class="row mt-sm-5 glass-panel">
+    <div class="col-sm-4 font-weight-bold">
+        {% for b in board1 %}
+        <p class="center"><a href="/b/{{b[1]}}" class="glass-button">{{b[1]}}</a></p>
+        {% endfor %}
+    </div>
+    <div class="col-sm-4 font-weight-bold">
+        {% for b in board2 %}
+        <p class="center"><a href="/b/{{b[1]}}" class="glass-button">{{b[1]}}</a></p>
+        {% endfor %}
+    </div>
+    <div class="col-sm-4 font-weight-bold">
+        {% for b in board3 %}
+        <p class="center"><a href="/b/{{b[1]}}" class="glass-button">{{b[1]}}</a></p>
+        {% endfor %}
+    </div>
+</div>
+
+
 {% endblock content %}
