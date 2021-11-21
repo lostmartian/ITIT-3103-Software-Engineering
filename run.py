@@ -54,5 +54,15 @@ def rules():
 def about():
     return render_template('about.html')
 
+class testFunctions():
+
+    def listBoard():
+        board = queryDatabase('SELECT * FROM board ORDER BY board_name')
+        return board
+
+    def listPosts():
+        posts = queryDatabase('SELECT post_id, board FROM posts')
+        return posts
+
 if __name__== "__main__":
     app.run(debug=True)
