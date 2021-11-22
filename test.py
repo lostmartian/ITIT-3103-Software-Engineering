@@ -36,9 +36,17 @@ class TestGETStatusCode(unittest.TestCase):
         r = requests.get(TestGETStatusCode.API_URL + '/rules')
         self.assertEqual(r.status_code, 200)
 
-    
+class TestPOSTStatusCodes(unittest.TestCase):
+    API_URL = "http://127.0.0.1:5000/"
+    BOARD_OBJ = {
+        "board_name": "Web Series",
+        "board_description": "posts only related to web series and not tv shows. TV Show discussion in Television board"
+    }
 
-    
+    def test_board_creation(self):
+        r = requests.post(TestPOSTStatusCodes.API_URL + 'createBoard/', json=TestPOSTStatusCodes.BOARD_OBJ)
+        self.assertEqual(r.status_code, 201)
+
     
 BOARDS = None
 POSTS = None
